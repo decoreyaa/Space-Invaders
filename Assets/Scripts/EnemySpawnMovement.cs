@@ -9,9 +9,11 @@ public class EnemySpawnMovement : MonoBehaviour
     private float startingCount;
     private float currentCount;
     private float aliveRatio;
+    public float shootCooldown;
 
     void Start()
     {
+
         //Gets the number of enemies
         startingCount = transform.childCount;
     }
@@ -51,18 +53,19 @@ public class EnemySpawnMovement : MonoBehaviour
         }
 
         if (topY > ScreenBounds.Top)
-            {
-                verticalDirection = -verticalDirection;
-            }
+        {
+            verticalDirection = -verticalDirection;
+        }
         if (bottomY < ScreenBounds.Bottom)
         {
             verticalDirection = -verticalDirection;
         }
-        
+
         // //Destroys enemy when it goes outside of screen
         // if (transform.position.x > 20f || transform.position.x < -30f)
         // {
         //     Destroy(gameObject);
         // }
     }
+ 
 }

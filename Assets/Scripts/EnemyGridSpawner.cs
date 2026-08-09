@@ -8,6 +8,8 @@ public class EnemyGridSpawner : MonoBehaviour
     public float horizontalSpacing = 1.5f;
     public float verticalSpacing = 1f;
     public Vector2 startPosition = new Vector2(5f, 3f);
+    public Bullet bulletPrefab;
+    public float shootCooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +32,11 @@ public class EnemyGridSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    void Shoot()
+    {
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        shootCooldown = Time.time + 2f;
     }
 }

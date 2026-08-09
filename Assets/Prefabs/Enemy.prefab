@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5232321252006002601}
   - component: {fileID: 6524057239982992784}
   - component: {fileID: -7804635963338862462}
+  - component: {fileID: -1407913435184965534}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -155,3 +156,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceecd34312229634997e9c8c000cb834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bulletPrefab: {fileID: -5074834330941007516, guid: 11a679b4b6badeb4a8eae17382eb774c, type: 3}
+  nextShootTime: 0
+  shootCooldown: 3
+--- !u!114 &-1407913435184965534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4206627230878325103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf161494c9e81da47ab637d39f1234e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
+  speed: 7

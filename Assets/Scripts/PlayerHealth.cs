@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             Debug.Log("Player Hit");
+            GameManager.Instance.SetGameOver();
         }
     }
 }

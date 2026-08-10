@@ -4,12 +4,10 @@ using UnityEngine;
 public class EnemySpawnMovement : MonoBehaviour
 {
     public float horizontalSpeed = 0.5f;
-    public float verticalSpeed = 0.5f;
-    private float verticalDirection = 1f;
+    public float speedMultiplier = 2f;
     private float startingCount;
     private float currentCount;
     private float aliveRatio;
-    public float shootCooldown;
 
     void Start()
     {
@@ -20,52 +18,26 @@ public class EnemySpawnMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (startingCount <= 0f)
+        {
+            return;
+        }
+
         //Gets current number of enemies
         currentCount = transform.childCount;
-        //Gets ratio of enemies 
+        //Gets ratio of enemies
         aliveRatio = currentCount / startingCount;
-        float multiplier = 2;
 
-        float currentSpeed = horizontalSpeed + (horizontalSpeed * (1f - aliveRatio) * multiplier);
-    
+        float currentSpeed = horizontalSpeed + (horizontalSpeed * (1f - aliveRatio) * speedMultiplier);
 
-        transform.position += Vector3.left * currentSpeed * Time.deltaTime;
-        BoundsCheck();
-        Vector2 vertDir = Vector2.up * verticalDirection * verticalSpeed * Time.deltaTime;
-        transform.Translate(vertDir);
-    }
-    void BoundsCheck()
-    {
-        float topY = float.MinValue;
-        float bottomY = float.MaxValue;
-
+        // each enemy moves and bounces itself, so the formation only hands down the speed
         for (int i = 0; i < transform.childCount; i++)
         {
-            float childY = transform.GetChild(i).position.y;
-            if (topY < childY)
+            Enemy enemy = transform.GetChild(i).GetComponent<Enemy>();
+            if (enemy != null)
             {
-                topY = childY;
-            }
-            if (bottomY > childY)
-            {
-                bottomY = childY;
+                enemy.horizontalSpeed = currentSpeed;
             }
         }
-
-        if (topY > ScreenBounds.Top)
-        {
-            verticalDirection = -verticalDirection;
-        }
-        if (bottomY < ScreenBounds.Bottom)
-        {
-            verticalDirection = -verticalDirection;
-        }
-
-        // //Destroys enemy when it goes outside of screen
-        // if (transform.position.x > 20f || transform.position.x < -30f)
-        // {
-        //     Destroy(gameObject);
-        // }
     }
- 
 }

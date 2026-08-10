@@ -8,22 +8,22 @@ public class EnemyGridSpawner : MonoBehaviour
     public float horizontalSpacing = 1.5f;
     public float verticalSpacing = 1f;
     public Vector2 startPosition = new Vector2(5f, 3f);
-    public Bullet bulletPrefab;
-    public float shootCooldown;
+    public float spawnOffset = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        float startX = ScreenBounds.Right + spawnOffset;
         // loop through rows and columns, instantiate one enemy per cell
         for (int row = 0; row < rows; row++)
         {
             for (int colum = 0; colum < colums; colum++)
             {
                 // start position plus however many spacings you've moved
-                float x = startPosition.x + (colum * horizontalSpacing);
+                float x = startX + (colum * horizontalSpacing);
                 //subtracted because increasing row should move down the scrteen
-                float y = startPosition.y -(colum * verticalSpacing);
-                Vector2 spawnPos = new Vector2(x, y);
+                float y = startPosition.y - (row * verticalSpacing);
 
+                Vector2 spawnPos = new Vector2(x, y);
                 Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
             }
         }
@@ -33,10 +33,5 @@ public class EnemyGridSpawner : MonoBehaviour
     void Update()
     {
 
-    }
-    void Shoot()
-    {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
-        shootCooldown = Time.time + 2f;
     }
 }

@@ -8,7 +8,7 @@ public class EnemyBullet : MonoBehaviour
     void Update()
     {
 
-        // move the bullet to the right in this horizontal-oriented game
+        // move the bullet to the left in this horizontal-oriented game
         transform.position += Vector3.left * speed * Time.deltaTime;
         // destroy the bullet if it flies off the right edge of the screen
         if (transform.position.x < -20f)
@@ -24,7 +24,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Hit");
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
   

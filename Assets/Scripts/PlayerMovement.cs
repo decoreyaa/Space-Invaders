@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float shootCooldown = 0.5f;
-    public float nextShootTime = 0f;
-    public float speed = 5f;
-    public float topBound = 4f;
-    public float bottomBound = -4f;
-    public float leftBound = -10f;
-    public float rightBound = 3f;
+    public float shootCooldown;
+    public float nextShootTime;
+    public float speed;
+    public float topBound;
+    public float bottomBound;
+    public float leftBound;
+    public float rightBound;
     public Bullet bulletPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

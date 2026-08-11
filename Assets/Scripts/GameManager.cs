@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        Time.timeScale = 1f;
     }
     void Update()
     {
@@ -34,11 +35,13 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameState.GameOver;
         Debug.Log("game is over");
+        Time.timeScale = 0f;
     }
 
     public void SetWon()
     {
         currentState = GameState.Won;
         Debug.Log("Player won");
+        Time.timeScale = 0f;
     }
 }

@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Needed for scene loading
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public EnemyGridSpawner enemySpawn;
     public GameState currentState = GameState.Playing;
+    public GameObject gameOverText;
+    public GameObject winText;
+    public GameObject restartButton;
     void Awake()
     {
         Instance = this;
@@ -12,7 +16,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("hasSpawned: " + enemySpawn.HasSpawned() + " count: " + enemySpawn.GetEnemyCount() + " state: " + currentState);
         // only check while the game is actually still being played
         // (think: should this run if the player already lost?)
         if (currentState == GameState.Playing)
@@ -33,15 +36,25 @@ public class GameManager : MonoBehaviour
 
     public void SetGameOver()
     {
-        currentState = GameState.GameOver;
-        Debug.Log("game is over");
         Time.timeScale = 0f;
+        currentState = GameState.GameOver;
+        gameOverText.SetActive(true);
+        restartButton.SetActive(true);
+        Debug.Log("game is over");
+        
     }
 
     public void SetWon()
     {
-        currentState = GameState.Won;
-        Debug.Log("Player won");
         Time.timeScale = 0f;
+        currentState = GameState.Won;
+        winText.SetActive(true);
+        restartButton.SetActive(true);
+        Debug.Log("Player won");
+    }
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

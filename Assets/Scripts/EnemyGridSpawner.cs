@@ -14,6 +14,8 @@ public class EnemyGridSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+         
+        
         float startX = ScreenBounds.Right + spawnOffset;
         // loop through rows and columns, instantiate one enemy per cell
         for (int row = 0; row < rows; row++)
@@ -35,7 +37,7 @@ public class EnemyGridSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetEnemyCount());
+        
     }
 
     public int GetEnemyCount()

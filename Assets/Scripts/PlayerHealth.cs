@@ -12,10 +12,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (currentHealth == 0)
-        {
-            GameManager.Instance.SetGameOver();
-        }
+        
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,6 +20,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Player Hit");
             currentHealth -= 1;
+            if (currentHealth == 0)
+        {
+            GameManager.Instance.SetGameOver();
+        }
         }
     }
 }

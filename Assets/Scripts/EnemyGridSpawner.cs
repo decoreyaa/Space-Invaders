@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class EnemyGridSpawner : MonoBehaviour
@@ -9,6 +10,7 @@ public class EnemyGridSpawner : MonoBehaviour
     public float verticalSpacing = 1f;
     public Vector2 startPosition = new Vector2(5f, 3f);
     public float spawnOffset = 2f;
+    private bool hasSpawned = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,11 +29,22 @@ public class EnemyGridSpawner : MonoBehaviour
                 Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
             }
         }
+        hasSpawned = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(GetEnemyCount());
+    }
 
+    public int GetEnemyCount()
+    {
+        return transform.childCount;
+    }
+
+    public bool HasSpawned()
+    {
+        return hasSpawned;
     }
 }

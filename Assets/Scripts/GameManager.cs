@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement; // Needed for scene loading
 
@@ -9,17 +10,32 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverText;
     public GameObject winText;
     public GameObject restartButton;
+    public GameObject pauseMenuUI;
+    public GameObject quitButton;
+
     void Awake()
     {
         Instance = this;
+        // a scene reload can arrive with timeScale still 0 from a pause or game over
         Time.timeScale = 1f;
+    }
+    void Start()
+    {
+
     }
     void Update()
     {
-        // only check while the game is actually still being played
-        // (think: should this run if the player already lost?)
-        if (currentState == GameState.Playing)
+        // Escape is handled outside the Playing guard on purpose - Pause() leaves the
+        // Playing state, so a check inside it can never see the keypress that unpauses.
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (currentState == GameState.Playing) Pause();
+            // explicit rather than a bare else, so Escape can't unfreeze a finished game
+            else if (currentState == GameState.Pause) Resume();
+        }
+
+        if (currentState == GameState.Playing)
+        {   
             if (enemySpawn.HasSpawned() && enemySpawn.GetEnemyCount() == 0)
                 {
                     SetWon();
@@ -30,6 +46,7 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Playing,
+        Pause,
         GameOver,
         Won
     }
@@ -40,6 +57,7 @@ public class GameManager : MonoBehaviour
         currentState = GameState.GameOver;
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
+        quitButton.SetActive(true);
         Debug.Log("game is over");
         
     }
@@ -52,9 +70,28 @@ public class GameManager : MonoBehaviour
         restartButton.SetActive(true);
         Debug.Log("Player won");
     }
-    
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        currentState = GameState.Pause;
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        currentState = GameState.Playing;
+        Time.timeScale = 1f;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

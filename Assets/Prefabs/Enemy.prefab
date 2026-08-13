@@ -156,14 +156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceecd34312229634997e9c8c000cb834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  horizontalSpeed: 0.5
-  verticalSpeed: 0.5
+  horizontalSpeed: 3
+  verticalSpeed: 3
   verticalDirection: 1
   horizontalDirection: 1
   bulletPrefab: {fileID: -5074834330941007516, guid: 11a679b4b6badeb4a8eae17382eb774c, type: 3}
   nextShootTime: 0
-  shootCooldown: 3
+  shootCooldown: 5
   leftWall: -6
+  movement: {fileID: 0}
 --- !u!50 &2845570657435852184
 Rigidbody2D:
   serializedVersion: 5

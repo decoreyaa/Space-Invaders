@@ -11,6 +11,8 @@ public class EnemyGridSpawner : MonoBehaviour
     public Vector2 startPosition = new Vector2(5f, 3f);
     public float spawnOffset = 2f;
     private bool hasSpawned = false;
+    public int enemyCount = 12;
+    private int spawnedSoFar = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,8 +30,15 @@ public class EnemyGridSpawner : MonoBehaviour
                 float y = startPosition.y - (row * verticalSpacing);
 
                 Vector2 spawnPos = new Vector2(x, y);
-                Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
+                if (spawnedSoFar < enemyCount)
+                {
+                    Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
+
+                }
+                spawnedSoFar++;
+
             }
+           if (spawnedSoFar == enemyCount) break; 
         }
         hasSpawned = true;
     }

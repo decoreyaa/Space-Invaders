@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        nextShootTime = Time.time + Random.Range(0f, shootCooldown);
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     void Shoot()
     {
         Instantiate(bulletPrefab, transform.position, transform.rotation);
-        nextShootTime = Time.time + shootCooldown;
+        nextShootTime = Time.time + Random.Range(shootCooldown * 0.5f, shootCooldown * 1.5f);
     }
     void BoundsCheck()
     {

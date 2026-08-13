@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float shootCooldown;
     public float leftWall = -6f;
     private bool hasEnteredScreen = false;
+    public GameObject movement;
 
     // Bullet.cs owns the kill so one bullet can only ever destroy one enemy
 

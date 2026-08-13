@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject restartButton;
     public GameObject pauseMenuUI;
     public GameObject quitButton;
+    public GameObject MainMenuButton;
 
     void Awake()
     {
@@ -74,18 +75,22 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        currentState = GameState.Playing;
     }
 
     public void Pause()
     {
+        Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         currentState = GameState.Pause;
-        Time.timeScale = 0f;
+        MainMenuButton.SetActive(true);
+        
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        MainMenuButton.SetActive(false);
         currentState = GameState.Playing;
         Time.timeScale = 1f;
     }
@@ -93,5 +98,10 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

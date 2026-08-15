@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        currentState = GameState.Playing;
     }
 
     public void Pause()

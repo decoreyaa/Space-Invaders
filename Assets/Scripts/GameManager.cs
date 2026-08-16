@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         currentState = GameState.GameOver;
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
+        MainMenuButton.SetActive(true);
         quitButton.SetActive(true);
         Debug.Log("game is over");
         
@@ -69,6 +70,8 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Won;
         winText.SetActive(true);
         restartButton.SetActive(true);
+        MainMenuButton.SetActive(true);
+        quitButton.SetActive(true);
         Debug.Log("Player won");
     }
 

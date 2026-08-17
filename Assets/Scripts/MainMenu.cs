@@ -9,10 +9,12 @@ public class MainMenu : MonoBehaviour
     public GameObject shipsButton;
     public GameObject title;
     public GameObject startButton;
+    public AudioClip clickSound;
+    private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,10 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void PlayClick()
+    {
+        audioSource.PlayOneShot(clickSound);
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("Game");

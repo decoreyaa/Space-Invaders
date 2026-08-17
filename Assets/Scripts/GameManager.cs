@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         MainMenuButton.SetActive(true);
         quitButton.SetActive(true);
         Debug.Log("game is over");
+        AudioManager.Instance.PlayLose();
         
     }
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         currentState = GameState.Pause;
         MainMenuButton.SetActive(true);
+        quitButton.SetActive(true);
         
     }
 

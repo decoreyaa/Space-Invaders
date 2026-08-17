@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     void Shoot()
     {
         Instantiate(bulletPrefab, transform.position, transform.rotation);
+        AudioManager.Instance.PlayLaser();
     }
 
 

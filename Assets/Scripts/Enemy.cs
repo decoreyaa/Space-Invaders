@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private bool hasEnteredScreen = false;
     public GameObject movement;
 
-    // Bullet.cs owns the kill so one bullet can only ever destroy one enemy
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -16,6 +16,13 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         sfxSource = GetComponent<AudioSource>();
     }
+
+    public void SetMasterVolume(float value)
+    {
+        AudioListener.volume = value;
+        PlayerPrefs.SetFloat("MasterVolume", value);
+        PlayerPrefs.Save();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void PlaySFX(AudioClip clip)
     {

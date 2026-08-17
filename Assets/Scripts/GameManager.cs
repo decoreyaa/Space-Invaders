@@ -1,6 +1,7 @@
 
 using UnityEngine;
-using UnityEngine.SceneManagement; // Needed for scene loading
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Needed for scene loading
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject quitButton;
     public GameObject MainMenuButton;
+    public GameObject Volume; 
 
     void Awake()
     {
@@ -88,11 +90,15 @@ public class GameManager : MonoBehaviour
         currentState = GameState.Pause;
         MainMenuButton.SetActive(true);
         quitButton.SetActive(true);
+        Volume.SetActive(true);
+        
         
     }
 
     public void Resume()
     {
+        quitButton.SetActive(false);
+        Volume.SetActive(false);
         pauseMenuUI.SetActive(false);
         MainMenuButton.SetActive(false);
         currentState = GameState.Playing;

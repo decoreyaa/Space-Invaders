@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class MainMenu : MonoBehaviour
     public GameObject startButton;
     public AudioClip clickSound;
     private AudioSource audioSource;
+    public GameObject Volume;
+    public TMP_Text highScoreText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        // null-guarded so the menu still runs before the text object is wired up
+        if (highScoreText != null)
+            highScoreText.text = "High Score: " + PlayerPrefs.GetInt(GameManager.HighScoreKey, 0);
     }
 
     // Update is called once per frame

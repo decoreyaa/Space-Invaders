@@ -4,6 +4,9 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
     private bool hasHit = false;
+      private int pointValue = 250; // Points awarded for hitting an enemy
+   
+    
 
     void Update()
     {
@@ -18,7 +21,7 @@ public class Bullet : MonoBehaviour
      
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         // Destroy is deferred to the end of the frame, so a spent bullet still gets
         // callbacks this step. Without the guard one shot could take out two enemies.
@@ -33,7 +36,11 @@ public class Bullet : MonoBehaviour
             hasHit = true;
             Debug.Log("Enemy Hit");
             Destroy(collision.gameObject);
+            GameManager.Instance.AddPoints(pointValue);
             Destroy(gameObject);
+            
         }
     }
+
+    
 }

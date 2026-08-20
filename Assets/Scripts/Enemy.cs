@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float horizontalSpeed = 0.5f;
-    public float verticalSpeed = 0.5f;
+    public float horizontalSpeed = 1f;
+    public float verticalSpeed = 1f;
     public float verticalDirection = 1f;
     public float horizontalDirection = 1f;
     public EnemyBullet bulletPrefab;
@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float leftWall = -6f;
     private bool hasEnteredScreen = false;
     public GameObject movement;
+   
 
     
 
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
         {
             Shoot();
         }
+        
     }
     void Shoot()
     {

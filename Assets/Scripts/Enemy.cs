@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public EnemyBullet bulletPrefab;
     public float nextShootTime;
     public float shootCooldown;
-    public float leftWall = -6f;
+    public float leftWall = 0f;
     private bool hasEnteredScreen = false;
     public GameObject movement;
    
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        float clampY = Mathf.Clamp(pos.y, ScreenBounds.Bottom, ScreenBounds.Top);
+        float clampY = Mathf.Clamp(pos.y, ScreenBounds.Bottom, ScreenBounds.Top -2);
         if (pos.y != clampY)
         {
             verticalDirection = -verticalDirection;

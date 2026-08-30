@@ -163,7 +163,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: -5074834330941007516, guid: 11a679b4b6badeb4a8eae17382eb774c, type: 3}
   nextShootTime: 0
   shootCooldown: 5
-  leftWall: -6
+  leftWall: 0
   movement: {fileID: 0}
 --- !u!50 &2845570657435852184
 Rigidbody2D:

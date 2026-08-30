@@ -33,9 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
         float posY = transform.position.y;
         float posX = transform.position.x;
-        float clampY = Mathf.Clamp(transform.position.y, bottomBound, topBound);
-        float clampX = Mathf.Clamp(transform.position.x, leftBound, rightBound);
-    
+        float clampY = Mathf.Clamp(transform.position.y, ScreenBounds.Bottom, ScreenBounds.Top-2);
+        float clampX = Mathf.Clamp(transform.position.x, ScreenBounds.Left, ScreenBounds.Right-16);
+
         //Final Clamp
         transform.position = new Vector3(clampX, clampY, 0);
 

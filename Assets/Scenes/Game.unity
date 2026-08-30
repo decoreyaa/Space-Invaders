@@ -2732,7 +2732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 598, y: 336}
+  m_AnchoredPosition: {x: 598, y: 344}
   m_SizeDelta: {x: 285.2759, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1336655056
@@ -3291,7 +3291,6 @@ MonoBehaviour:
   waveText: {fileID: 1143397450}
   scoreText: {fileID: 586873567}
   highScoreText: {fileID: 1282981323}
-  highScore: 0
 --- !u!4 &1529615948
 Transform:
   m_ObjectHideFlags: 0
